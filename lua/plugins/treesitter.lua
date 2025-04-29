@@ -18,7 +18,7 @@ return{
                     "typescript"
                 },
                 highlight = { enable = true },
-                indent = { enable = true },  
+                indent = { enable = true }
             })
         end
     }
