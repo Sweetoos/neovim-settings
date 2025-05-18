@@ -8,6 +8,7 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        dependencies={"williamboman/mason.nvim"},
         lazy = false,
         config = function()
             require("mason-lspconfig").setup({
@@ -20,6 +21,7 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies={"williamboman/mason.nvim"},
         lazy = false,
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -52,8 +54,8 @@ return {
                         use_cxx_flags = true,
                     },
                     ClangCommandLine = {
-                        "-I/usr/local/include", -- **Add your OpenSSL include path here!**
-                        "-std=c++2b", -- Add other necessary flags
+                        "-I/usr/local/include",
+                        "-std=c++2b",
                         "-Wall",
                         "-Wextra",
                     },
