@@ -4,14 +4,14 @@ return {
         lazy = false,
         config = function()
             require("mason").setup()
-        end
+        end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
         lazy = false,
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "ts_ls", "clangd", "ast_grep", "pyright" }
+                ensure_installed = { "lua_ls", "ts_ls", "clangd", "ast_grep", "pyright" },
             })
         end,
         opts = {
@@ -35,6 +35,29 @@ return {
             })
             lspconfig.clangd.setup({
                 capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.documentFormattingProvider = false
+                end,
+                cmd = {
+                    "clangd",
+                    "--background-index",
+                    "--log=verbose",
+                    "--pretty",
+                    "--header-insertion=never",
+                    "--clang-tidy",
+                },
+                init_options = {
+                    CompileCommands = {
+                        search_dir = "",
+                        use_cxx_flags = true,
+                    },
+                    ClangCommandLine = {
+                        "-I/usr/local/include", -- **Add your OpenSSL include path here!**
+                        "-std=c++2b", -- Add other necessary flags
+                        "-Wall",
+                        "-Wextra",
+                    },
+                },
             })
             lspconfig.ast_grep.setup({
                 capabilities = capabilities,
@@ -42,6 +65,6 @@ return {
             lspconfig.pyright.setup({
                 capabilities = capabilities,
             })
-        end
-    }
+        end,
+    },
 }
