@@ -16,7 +16,8 @@ return {
                     "rust",
                     "cmake",
                     "make",
-                    "typescript"
+                    "typescript",
+                    "tsx"
                 },
                 highlight = { enable = true },
                 indent = { enable = true },
