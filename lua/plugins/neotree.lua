@@ -21,8 +21,8 @@ return {
     })
 
     -- Keymaps
-    vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
-    vim.keymap.set('n', '<C-,>', function()
+    vim.keymap.set('n', '<leader>n', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
+    vim.keymap.set('n', '<C-n>', function()
       local current_buf = vim.api.nvim_get_current_buf()
       local buf_ft = vim.api.nvim_buf_get_option(current_buf, 'filetype')
       if buf_ft == 'neo-tree' then

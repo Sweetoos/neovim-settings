@@ -1,5 +1,4 @@
 local builtin = require('telescope.builtin')
-local lspconfig=require("lspconfig")
 
 vim.keymap.set("n", "<leader>s", "<cmd>wall<CR>", { desc = "Save all files" })
 vim.keymap.set('n', '<leader>re', function() vim.cmd("Explore") end)
