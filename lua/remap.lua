@@ -33,6 +33,7 @@ vim.keymap.set("n", "<C-u>", function() require("harpoon.ui").nav_file(6) end)
 vim.keymap.set("n", "<C-i>", function() require("harpoon.ui").nav_file(7) end)
 vim.keymap.set("n", "<C-o>", function() require("harpoon.ui").nav_file(8) end)
 
+
 vim.keymap.set("n", "<leader>rw", function()
   local word = vim.fn.input("Replace with: ")
   vim.cmd("%s/\\<\\w\\+\\>/" .. word .. "/g")
