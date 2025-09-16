@@ -3,15 +3,17 @@
 This document contains all the keybindings for this Neovim configuration.
 
 ## Leader Key
+
 - Leader is set to `<Space>`
 
 ## File Management
 
 ### Neo-tree (File Explorer)
-- `<C-n>` - Toggle Neo-tree
-- `<C-,>` - Toggle focus between Neo-tree and code (may not work on Linux terminals)
+
+- `<C-n>` - Open/focus Neo-tree if closed or unfocused; return to code if focused
 
 ### Telescope (Fuzzy Finder)
+
 - `<leader>gi` - Git files
 - `<leader>rf` - Find files
 - `<leader>ra` - Live grep
@@ -20,6 +22,7 @@ This document contains all the keybindings for this Neovim configuration.
 ## Git Operations
 
 ### Neogit
+
 - `<leader>gg` - Open Neogit interface
 - `c` - Commit popup
 - `P` - Push popup
@@ -32,6 +35,7 @@ This document contains all the keybindings for this Neovim configuration.
 - `z` - Stash popup
 
 ### Diffview
+
 - `<leader>gd` - Open Diffview
 - `<leader>gc` - Close Diffview
 - `<leader>gh` - File history
@@ -39,6 +43,7 @@ This document contains all the keybindings for this Neovim configuration.
 ## LSP (Language Server Protocol)
 
 ### General LSP
+
 - `K` - Hover documentation
 - `<leader>k` - Show diagnostics at cursor
 - `<leader>gd` - Go to definition
@@ -47,6 +52,7 @@ This document contains all the keybindings for this Neovim configuration.
 - `<leader>gf` - Format code
 
 ### Additional LSP Keybindings (in Neogit)
+
 - `gd` - Go to definition
 - `gD` - Go to declaration
 - `gi` - Go to implementation
@@ -57,6 +63,7 @@ This document contains all the keybindings for this Neovim configuration.
 - `<space>ca` - Code actions
 
 ## Harpoon (File Navigation)
+
 - `<leader>a` - Add file to harpoon
 - `<C-e>` - Toggle harpoon quick menu
 - `<C-h>` - Navigate to file 1
@@ -69,11 +76,13 @@ This document contains all the keybindings for this Neovim configuration.
 - `<C-o>` - Navigate to file 8
 
 ## General Operations
+
 - `<leader>s` - Save all files
 - `<leader>re` - Explore (netrw)
 - `<leader>rw` - Replace word under cursor
 
 ## Completion (nvim-cmp)
+
 - `<C-Space>` - Trigger completion
 - `<C-b>` - Scroll docs up
 - `<C-f>` - Scroll docs down
@@ -81,20 +90,25 @@ This document contains all the keybindings for this Neovim configuration.
 - `<CR>` - Confirm selection
 
 ## Auto-pairs
+
 - Automatically pairs brackets, quotes, etc.
 - `<BS>` - Delete paired character
 - `<CR>` - New line with proper indentation
 
 ## Treesitter
+
 - Syntax highlighting and indentation for supported languages
 - Supported languages: lua, cmake, javascript, cpp, c, java, python, rust, make, typescript, tsx, markdown
 
 ## File Type Specific
+
 The following file types automatically use 2-space indentation:
+
 - html, css, typescript, javascript, typescriptreact, javascriptreact, vue
 
 ## Tips
+
 - Use `:help` to get help on any command
 - Use `:checkhealth` to check plugin health
 - Use `:Lazy` to manage plugins
-- Use `:TSInstall <language>` to install additional Treesitter parsers 
+- Use `:TSInstall <language>` to install additional Treesitter parsers

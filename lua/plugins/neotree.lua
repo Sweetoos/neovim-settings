@@ -22,16 +22,36 @@ return {
     })
 
     -- Keymaps
-    vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
-    vim.keymap.set('n', '<C-,>', function()
-      local current_buf = vim.api.nvim_get_current_buf()
-      local buf_ft = vim.api.nvim_buf_get_option(current_buf, 'filetype')
-      if buf_ft == 'neo-tree' then
-        vim.cmd('wincmd l')
-      else
-        vim.cmd('wincmd h')
+    -- Ctrl+n: If Neo-tree is closed -> open and focus it.
+    --         If Neo-tree is open and focused -> go back to last non-neo-tree window.
+    --         If Neo-tree is open but not focused -> focus Neo-tree window.
+    vim.keymap.set('n', '<C-n>', function()
+      local neo_tree_wins = {}
+      for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        local ft = vim.api.nvim_get_option_value('filetype', { buf = buf })
+        if ft == 'neo-tree' then
+          table.insert(neo_tree_wins, win)
+        end
       end
-    end, { desc = 'Toggle focus Neo-tree/file' })
+
+      local current_buf = vim.api.nvim_get_current_buf()
+      local current_ft = vim.api.nvim_get_option_value('filetype', { buf = current_buf })
+
+      if #neo_tree_wins == 0 then
+        vim.cmd('Neotree reveal')
+        return
+      end
+
+      if current_ft == 'neo-tree' then
+        -- Switch back to previous window (most intuitive cross-platform)
+        vim.cmd('wincmd p')
+        return
+      end
+
+      -- Focus first neo-tree window found
+      vim.api.nvim_set_current_win(neo_tree_wins[1])
+    end, { desc = 'Toggle open/focus Neo-tree' })
 
     vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
   end,
