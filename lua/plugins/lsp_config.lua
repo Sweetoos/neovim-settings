@@ -14,7 +14,17 @@ return {
         lazy = false,
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "ts_ls", "clangd", "ast_grep", "pyright" },
+                ensure_installed = { 
+                    "lua_ls", 
+                    "ts_ls", 
+                    "clangd", 
+                    "ast_grep", 
+                    "pyright",
+                    "html",
+                    "cssls",
+                    "eslint",
+                    "tailwindcss"
+                },
             })
         end,
         opts = {
@@ -47,17 +57,23 @@ return {
             end
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local lspconfig = require("lspconfig")
             
-            lspconfig.ts_ls.setup({
+            -- TypeScript/JavaScript
+            vim.lsp.config('ts_ls', {
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
-            lspconfig.lua_ls.setup({
+            vim.lsp.enable('ts_ls')
+            
+            -- Lua
+            vim.lsp.config('lua_ls', {
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
-            lspconfig.clangd.setup({
+            vim.lsp.enable('lua_ls')
+            
+            -- C/C++
+            vim.lsp.config('clangd', {
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     on_attach(client, bufnr)
@@ -84,14 +100,53 @@ return {
                     },
                 },
             })
-            lspconfig.ast_grep.setup({
+            vim.lsp.enable('clangd')
+            
+            -- AST Grep
+            vim.lsp.config('ast_grep', {
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
-            lspconfig.pyright.setup({
+            vim.lsp.enable('ast_grep')
+            
+            -- Python
+            vim.lsp.config('pyright', {
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
+            vim.lsp.enable('pyright')
+            
+            -- HTML
+            vim.lsp.config('html', {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "html", "htm" },
+            })
+            vim.lsp.enable('html')
+            
+            -- CSS
+            vim.lsp.config('cssls', {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "css", "scss", "less" },
+            })
+            vim.lsp.enable('cssls')
+            
+            -- ESLint
+            vim.lsp.config('eslint', {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+            })
+            vim.lsp.enable('eslint')
+            
+            -- Tailwind CSS
+            vim.lsp.config('tailwindcss', {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+            })
+            vim.lsp.enable('tailwindcss')
         end,
     },
 }
