@@ -22,8 +22,7 @@ return {
                     "pyright",
                     "html",
                     "cssls",
-                    "eslint",
-                    "tailwindcss"
+                    "eslint"
                 },
             })
         end,
@@ -139,14 +138,6 @@ return {
                 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             })
             vim.lsp.enable('eslint')
-            
-            -- Tailwind CSS
-            vim.lsp.config('tailwindcss', {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
-            })
-            vim.lsp.enable('tailwindcss')
         end,
     },
 }
