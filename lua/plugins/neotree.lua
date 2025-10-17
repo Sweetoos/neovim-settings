@@ -53,6 +53,9 @@ return {
       vim.api.nvim_set_current_win(neo_tree_wins[1])
     end, { desc = 'Toggle open/focus Neo-tree' })
 
+    -- <leader>e: Fully toggle Neo-tree visibility (open/close)
+    vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree visibility' })
+
     vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
   end,
 }

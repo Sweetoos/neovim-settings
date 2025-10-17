@@ -11,6 +11,7 @@ This document contains all the keybindings for this Neovim configuration.
 ### Neo-tree (File Explorer)
 
 - `<C-n>` - Open/focus Neo-tree if closed or unfocused; return to code if focused
+- `<leader>e` - Toggle Neo-tree visibility (open/close)
 
 ### Telescope (Fuzzy Finder)
 
